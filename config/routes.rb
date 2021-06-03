@@ -122,6 +122,6 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-  get("/", { :controller => "users", :action => "index"})
+  get("/", { :controller => "movies", :action => "index"})
 
 end

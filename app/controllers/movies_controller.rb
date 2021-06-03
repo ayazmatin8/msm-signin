@@ -14,6 +14,10 @@ class MoviesController < ApplicationController
 
     @the_movie = matching_movies.at(0)
 
+    matching_bookmarks = Bookmark.all
+
+    @list_of_bookmarks = matching_bookmarks.order({ :created_at => :desc })
+
     render({ :template => "movies/show.html.erb" })
   end
 

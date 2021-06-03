@@ -18,6 +18,33 @@
       </div>
     </div>
 
+<% if @current_user != nil %>
+    <%has_seen = false%>
+    <% @list_of_bookmarks.each do |a_bookmark| %>
+      <% if a_bookmark.movie_id == @the_movie.id %>
+        <% if a_bookmark.user_id == @current_user.id %>
+          <% has_seen = true%>
+          <a href="/delete_bookmark/<%= a_bookmark.id %>">
+              Un-bookmark
+          </a>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if has_seen == false %>
+      <hr>
+        <form action="/insert_bookmark" method="post">
+        <div>
+        <label for="movie_id"></label>
+        <input type="hidden" id="movie_id" name="query_movie_id" value="<%= @the_movie.id%>">
+        </div>
+        <button class="btn btn-block btn-outline-secondary">
+          Bookmark this movie!
+        </button>
+        </form>
+    <% end %>
+   <% end %>
+
+
     <dl>
       <dt>
         Title

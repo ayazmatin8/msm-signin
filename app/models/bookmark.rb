@@ -9,4 +9,12 @@
 #  user_id    :integer
 #
 class Bookmark < ApplicationRecord
+belongs_to(:movie_name, {
+    :class_name => "Movie",
+    :foreign_key => "movie_id",
+    :required => true
+  })
+
+belongs_to(:user)
+
 end
